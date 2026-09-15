@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Persona - Maria Elena Santos</title>
+<style>
+    @page {
+        size: A4 landscape;
+        margin: 0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        background: #dfe3d5;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #283019;
+    }
+
+    .page {
+        width: 297mm;
+        height: 210mm;
+        padding: 12mm;
+        background: #687d00;
+        display: flex;
+        gap: 7mm;
+        overflow: hidden;
+    }
+
+    .profile {
+        width: 33%;
+        background: #fff8df;
+        border-radius: 7mm;
+        padding: 9mm 8mm 7mm;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .name {
+        margin: 0 0 5mm;
+        text-align: center;
+        color: #687d00;
+        font-family: Georgia, serif;
+        font-size: 25pt;
+        line-height: 1.05;
+        font-weight: 700;
+    }
+
+    .photo-wrap {
+        width: 53mm;
+        height: 53mm;
+        border-radius: 50%;
+        background: #f7c55a;
+        padding: 0;
+        overflow: hidden;
+        margin-bottom: 6mm;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    /* Replace this route with your uploaded profile image.
+       Example: assets/maria-elena-santos.jpg */
+    .photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .profile-info {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 8mm 30mm 1fr;
+        gap: 2.8mm 1.5mm;
+        font-size: 9.5pt;
+        align-items: center;
+        margin-top: 1mm;
+    }
+
+    .icon {
+        color: #687d00;
+        font-size: 12pt;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .label {
+        font-weight: 700;
+        color: #334018;
+    }
+
+    .value {
+        color: #3e442f;
+    }
+
+    .quote {
+        width: 100%;
+        margin-top: auto;
+        padding-top: 5mm;
+        border-top: 1px solid #d6d3b9;
+        color: #50543d;
+        font-family: Georgia, serif;
+        font-size: 10.5pt;
+        line-height: 1.35;
+        font-style: italic;
+        text-align: center;
+    }
+
+    .content {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 6mm;
+        min-width: 0;
+    }
+
+    .card {
+        background: #fff8df;
+        border-radius: 6mm;
+        padding: 6mm 7mm;
+        overflow: hidden;
+    }
+
+    .card h2 {
+        margin: 0 0 3.5mm;
+        color: #687d00;
+        font-family: Georgia, serif;
+        font-size: 14pt;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        gap: 2.5mm;
+    }
+
+    .card h2 span {
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 12pt;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 5mm;
+        font-size: 9.3pt;
+        line-height: 1.45;
+    }
+
+    li { margin-bottom: 1.7mm; }
+
+    .full {
+        grid-column: 1 / 3;
+    }
+
+    .needs-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5mm;
+    }
+
+    .need-block h3 {
+        margin: 0 0 2mm;
+        font-size: 10pt;
+        color: #4f6100;
+    }
+
+    .need-block ul {
+        font-size: 8.9pt;
+        line-height: 1.35;
+    }
+
+    .service {
+        display: flex;
+        align-items: center;
+        gap: 5mm;
+        height: 100%;
+    }
+
+    .service-badge {
+        width: 22mm;
+        height: 22mm;
+        border-radius: 5mm;
+        background: #e9f0bd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #687d00;
+        font-size: 21pt;
+        flex: 0 0 auto;
+    }
+
+    .service h3 {
+        margin: 0 0 2mm;
+        color: #687d00;
+        font-family: Georgia, serif;
+        font-size: 13pt;
+    }
+
+    .service p {
+        margin: 0;
+        font-size: 9pt;
+        line-height: 1.35;
+    }
+
+    .tag {
+        display: inline-block;
+        margin-top: 3mm;
+        padding: 1.5mm 3mm;
+        border-radius: 10mm;
+        background: #e9f0bd;
+        color: #536500;
+        font-size: 8pt;
+        font-weight: 700;
+    }
+
+    .pdf-button {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        z-index: 1000;
+        border: 0;
+        border-radius: 10px;
+        padding: 11px 17px;
+        background: #fff8df;
+        color: #687d00;
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(0,0,0,.18);
+    }
+
+    .pdf-button:hover {
+        background: #f3edcf;
+    }
+
+    @media print {
+        body { background: none; }
+        .page { box-shadow: none; }
+        .pdf-button { display: none; }
+    }
+</style>
+</head>
+
+<body>
+<button class="pdf-button" onclick="window.print()" aria-label="Download or save this persona as a PDF">
+    ↓ &nbsp; Download as PDF
+</button>
+
+<main class="page">
+
+    <!-- LEFT PROFILE PANEL -->
+    <section class="profile">
+        <h1 class="name">Maria Elena<br>Santos</h1>
+
+        <div class="photo-wrap">
+            <!-- USER IMAGE ROUTE: replace with your own file -->
+            <img src="assets/maria-elena-santos.jpg" alt="Maria Elena Santos profile photo">
+        </div>
+
+        <div class="profile-info">
+            <div class="icon">◉</div>
+            <div class="label">Age</div>
+            <div class="value">68</div>
+
+            <div class="icon">⌂</div>
+            <div class="label">Location</div>
+            <div class="value">Panabo City, Davao del Norte</div>
+
+            <div class="icon">▣</div>
+            <div class="label">Occupation</div>
+            <div class="value">Retired</div>
+
+            <div class="icon">♥</div>
+            <div class="label">Accessibility</div>
+            <div class="value">Memory & visual difficulty</div>
+        </div>
+
+        <div class="quote">
+            “Sometimes I remember that I need to take my medicine, but I forget if I already took it.”
+        </div>
+    </section>
+
+    <!-- RIGHT CONTENT -->
+    <section class="content">
+
+        <article class="card">
+            <h2><span>▣</span> Background</h2>
+            <ul>
+                <li>Takes daily maintenance medication.</li>
+                <li>Usually manages her medication independently.</li>
+                <li>Uses a smartphone for basic daily tasks.</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h2><span>●</span> Goals</h2>
+            <ul>
+                <li>Take medicine on time.</li>
+                <li>Know if she already took it.</li>
+                <li>Manage medication independently.</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h2><span>♥</span> Motivations</h2>
+            <ul>
+                <li>Maintain her health.</li>
+                <li>Stay independent.</li>
+                <li>Avoid missed or repeated doses.</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <h2><span>⚑</span> Pain Points</h2>
+            <ul>
+                <li>Forgets whether medicine was already taken.</li>
+                <li>Gets distracted during daily routines.</li>
+                <li>Small text is difficult to read.</li>
+            </ul>
+        </article>
+
+        <article class="card full">
+            <h2><span>◒</span> Accessibility Needs</h2>
+            <div class="needs-grid">
+                <div class="need-block">
+                    <h3>Memory Support</h3>
+                    <ul>
+                        <li>Clear medication reminders</li>
+                        <li>Simple “Taken” confirmation</li>
+                    </ul>
+                </div>
+                <div class="need-block">
+                    <h3>Visual Support</h3>
+                    <ul>
+                        <li>Large, readable text</li>
+                        <li>Clear buttons and status indicators</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="service">
+                <div class="service-badge">✓</div>
+                <div>
+                    <h3>Preferred Service</h3>
+                    <p>A simple medication tracker with reminders and an easy way to confirm daily intake.</p>
+                    <span class="tag">Simple & accessible</span>
+                </div>
+            </div>
+        </article>
+
+    </section>
+</main>
+</body>
+</html>
